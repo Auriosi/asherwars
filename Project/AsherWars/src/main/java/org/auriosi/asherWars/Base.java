@@ -10,6 +10,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -83,12 +84,12 @@ public class Base {
         return players;
     }
 
-    public void addPlayer(Player player) {
+    public void addPlayer(@NotNull Player player) {
         players.add(player);
         team.addEntry(player.getName());
     }
 
-    public void removePlayer(Player player) {
+    public void removePlayer(@NotNull Player player) {
         players.remove(player);
         team.removeEntry(player.getName());
     }
@@ -104,7 +105,7 @@ public class Base {
         return gameManager;
     }
 
-    public void sendNPCPackets(Player player) {
+    public void sendNPCPackets(@NotNull Player player) {
         gameManager.getPlugin().getProtocolManager().sendServerPacket(player, shopNPCJoinPacket);
         gameManager.getPlugin().getProtocolManager().sendServerPacket(player, upgradeNPCJoinPacket);
         gameManager.getPlugin().getProtocolManager().sendServerPacket(player, shopNPCAddPacket);

@@ -2,6 +2,7 @@ package org.auriosi.asherWars;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
+import org.auriosi.asherWars.commands.JoinTeamCommand;
 import org.auriosi.asherWars.commands.StartCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,6 +14,7 @@ public final class AsherWars extends JavaPlugin {
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new GameplayDisableListeners(this), this);
         getCommand("start").setExecutor(new StartCommand(gameManager));
+        getCommand("jointeam").setExecutor(new JoinTeamCommand(gameManager));
     }
 
     @Override

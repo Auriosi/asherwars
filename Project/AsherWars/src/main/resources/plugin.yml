@@ -5,5 +5,11 @@ api-version: '1.21'
 depend: [ ProtocolLib ]
 commands:
   start:
-    description: Start a game
-    usage: /asherwars start
+    description: Start the game
+    usage: /start
+  jointeam:
+    description: Join a team
+    usage: /jointeam <team>
+    aliases: [
+      jt
+    ]

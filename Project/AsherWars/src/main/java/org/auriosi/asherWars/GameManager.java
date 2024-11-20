@@ -8,6 +8,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class GameManager {
     public final String upgradeSkinValue = "ewogICJ0aW1lc3RhbXAiIDogMTU4ODk1NjkyNDM2NiwKICAicHJvZmlsZUlkIiA6ICJmMjc0YzRkNjI1MDQ0ZTQxOGVmYmYwNmM3NWIyMDIxMyIsCiAgInByb2ZpbGVOYW1lIiA6ICJIeXBpZ3NlbCIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS83NzA1NjU1NjYwMmIzMTA4NTIxMGI2MjM0Y2Y3Mzc4NDg5YjJlOTVlZjM2MDMxOWEyOGJhZWMzYzE3Y2Q1ZjhkIgogICAgfQogIH0KfQ==";
     public final String upgradeSkinSignature = "ij7f4rfsYvEdqWsUwG/C/Qmra10eJGxs7oIAQGzf1E0om8GaXxIDz8EPvs/20yZdDuix0ptiLmz+gsqNDuL3rxBr4a5rVClNNzABROU/iiNJf0uPAJ+604VxHu2E8/Xedklo/BZWjhFGiqa2jxg4XmVvbPr9Sy0IiFmOKQsTXOuhNy551EUQjnrJ+4/Gsr32mioX7PnuzhyLmrjQivZagN3u/IQh0T6eb2Wi/kJY9O176KxzjEP4TrtTyQFDaJhqozED23UaWmMtpTx+qQ8YBZ02O4UjI9LDg0u5IyDh1LcCPwMyoUBFjOPPuDeZ8MFrtQYdabaCFn06c3EwxMTF6zXKJe08GJZ77ldUwuMhnNV1k08eg2P9UwidY1gEX702I2JcL6lMiD8kB+HMllib9xzb73Y1C1kgDzu3f1Y7oA5mU/EnZn+yGBwrSBhFD+/KYtOlpQzjGiimwIVcOYmGWz+2J2aMHBibJl6X0/ULDUXOr4b0Uc1RL1efr0vF3TS2F71D+fNGsFApTMwQIqN+wpCMHEK/3xl1bX1+ov7xvWW6y97dZ0eceFVQwDn/OXmr1jpy6m1htdi08eAk3i4VmfC783U4ERwEBUzopMHj3ofem02wNxp6o9NLyqsForoVz1nibB4YOIYeL5yGJSKlCpb5Tfv/07jjN0s2u2xx6Zk=";
 
-    public GameManager(AsherWars plugin) {
+    public GameManager(@NotNull AsherWars plugin) {
         this.gameState = GameState.LOBBY;
         this.plugin = plugin;
         teamNames.add("Asher's Angels");
@@ -116,7 +117,7 @@ public class GameManager {
         return bases;
     }
 
-    public void addPlayerToBase(Player player, String teamName) {
+    public void addPlayerToBase(@NotNull Player player, @NotNull String teamName) {
         for (Base base : bases) {
             if (base.getTeam().getName().equals(teamName)) {
                 base.addPlayer(player);
@@ -125,7 +126,7 @@ public class GameManager {
         }
     }
 
-    public void removePlayerFromBase(Player player) {
+    public void removePlayerFromBase(@NotNull Player player) {
         for (Base base : bases) {
             if (base.getPlayers().contains(player)) {
                 base.removePlayer(player);
@@ -134,7 +135,7 @@ public class GameManager {
         }
     }
 
-    public void sendNPCPackets(Player player) {
+    public void sendNPCPackets(@NotNull Player player) {
         for (Base base : bases) {
             base.sendNPCPackets(player);
         }
