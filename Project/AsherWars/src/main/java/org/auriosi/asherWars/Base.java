@@ -7,12 +7,15 @@ import com.comphenix.protocol.wrappers.PlayerInfoData;
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import com.comphenix.protocol.wrappers.WrappedSignedProperty;
 import org.bukkit.Location;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.UUID;
 
 public class Base {
     private final GameManager gameManager;
@@ -25,11 +28,21 @@ public class Base {
     private final Team team;
     private final Team scoreboardTeam;
     private final ArrayList<Player> players = new ArrayList<>();
+    private final BlockData heartBlockData;
 
-    public Base(GameManager gameManager, Team team, Team scoreboardTeam, int teamIndex, Location shopNPCLocation, Location upgradeNPCLocation) {
+    public Base(
+            @NotNull GameManager gameManager,
+            @NotNull Team team,
+            @NotNull Team scoreboardTeam,
+            int teamIndex,
+            @NotNull Location shopNPCLocation,
+            @NotNull Location upgradeNPCLocation,
+            @NotNull BlockData heartBlockData
+    ) {
         this.gameManager = gameManager;
         this.team = team;
         this.scoreboardTeam = scoreboardTeam;
+        this.heartBlockData = heartBlockData;
         UUID shopNPCUUID = UUID.randomUUID();
         UUID upgradeNPCUUID = UUID.randomUUID();
         int shopNPCEntityId = 14504 + (teamIndex*10);
@@ -78,6 +91,10 @@ public class Base {
 
     public Team getScoreboardTeam() {
         return scoreboardTeam;
+    }
+
+    public BlockData getHeartBlockData() {
+        return heartBlockData;
     }
 
     public ArrayList<Player> getPlayers() {

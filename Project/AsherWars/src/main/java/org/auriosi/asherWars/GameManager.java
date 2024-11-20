@@ -76,7 +76,7 @@ public class GameManager {
         objective.getScore(ChatColor.DARK_BLUE + " ").setScore(11);
         objective.getScore(ChatColor.DARK_GREEN + " ").setScore(1);
         objective.getScore(ChatColor.GOLD + "Developed by Auriosi").setScore(0);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             String teamName = teamNames.get(i);
             Team team = scoreboard.registerNewTeam(teamName);
             team.displayName(Component.text(teamName));
@@ -88,7 +88,41 @@ public class GameManager {
             scoreboardTeam.prefix(Component.text(teamName + " ").color(teamColors.get(i)).decorate(TextDecoration.BOLD));
             scoreboardTeam.suffix(Component.text("✔").color(NamedTextColor.GREEN));
             objective.getScore(chatColors.get(i).toString()).setScore((int) (2.0 + (double) i + Math.floor((8.0 - (double) i) / 2.0)));
-            Base base = new Base(this, team, scoreboardTeam, i, shopNPCLocations.get(i), upgradeNPCLocations.get(i));
+            Location heartLocation;
+            switch (i) {
+                case 0: // Asher's Angels
+                    heartLocation = new Location(plugin.getServer().getWorld("world"),
+                            getPlugin().getConfig().getInt("AshersAngels.heartBlockLocation.x"),
+                            getPlugin().getConfig().getInt("AshersAngels.heartBlockLocation.y"),
+                            getPlugin().getConfig().getInt("AshersAngels.heartBlockLocation.z")
+                    );
+                    break;
+                case 1: // Asher Devout
+                    heartLocation = new Location(plugin.getServer().getWorld("world"),
+                            getPlugin().getConfig().getInt("AsherDevout.heartBlockLocation.x"),
+                            getPlugin().getConfig().getInt("AsherDevout.heartBlockLocation.y"),
+                            getPlugin().getConfig().getInt("AsherDevout.heartBlockLocation.z")
+                    );
+                    break;
+                case 2: // Asher Ashers
+                    heartLocation = new Location(plugin.getServer().getWorld("world"),
+                            getPlugin().getConfig().getInt("AsherAshers.heartBlockLocation.x"),
+                            getPlugin().getConfig().getInt("AsherAshers.heartBlockLocation.y"),
+                            getPlugin().getConfig().getInt("AsherAshers.heartBlockLocation.z")
+                    );
+                    break;
+                case 3: // Dolphins
+                    heartLocation = new Location(plugin.getServer().getWorld("world"),
+                            getPlugin().getConfig().getInt("Dolphins.heartBlockLocation.x"),
+                            getPlugin().getConfig().getInt("Dolphins.heartBlockLocation.y"),
+                            getPlugin().getConfig().getInt("Dolphins.heartBlockLocation.z")
+                    );
+                    break;
+                default:
+                    heartLocation = new Location(plugin.getServer().getWorld("world"), 0, 0, 0);
+                    break;
+            }
+            Base base = new Base(this, team, scoreboardTeam, i, shopNPCLocations.get(i), upgradeNPCLocations.get(i), getPlugin().getServer().getWorld("world").getBlockData(heartLocation));
             plugin.getLogger().info("Registered team " + teamName);
         }
     }

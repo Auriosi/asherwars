@@ -1,0 +1,58 @@
+AshersAngels:
+  heartBlockLocation:
+    x: 0
+    y: 0
+    z: 0
+  shopNPCLocation:
+    x: 0
+    y: 0
+    z: 0
+  upgradeNPCLocation:
+    x: 0
+    y: 0
+    z: 0
+AsherDevout:
+  heartBlockLocation:
+    x: 0
+    y: 0
+    z: 0
+  shopNPCLocation:
+    x: 0
+    y: 0
+    z: 0
+  upgradeNPCLocation:
+    x: 0
+    y: 0
+    z: 0
+AsherAshers:
+  heartBlockLocation:
+    x: 0
+    y: 0
+    z: 0
+  shopNPCLocation:
+    x: 0
+    y: 0
+    z: 0
+  upgradeNPCLocation:
+    x: 0
+    y: 0
+    z: 0
+Dolphins:
+  heartBlockLocation:
+    x: 0
+    y: 0
+    z: 0
+  shopNPCLocation:
+    x: 0
+    y: 0
+    z: 0
+  upgradeNPCLocation:
+    x: 0
+    y: 0
+    z: 0
+shopNPCSkin:
+  value: ""
+  signature: ""
+upgradeNPCSkin:
+  value: ""
+  signature: ""
