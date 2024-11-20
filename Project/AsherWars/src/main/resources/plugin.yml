@@ -1,0 +1,9 @@
+name: AsherWars
+version: '1.0-SNAPSHOT'
+main: org.auriosi.asherWars.AsherWars
+api-version: '1.21'
+depend: [ ProtocolLib ]
+commands:
+  start:
+    description: Start a game
+    usage: /asherwars start
